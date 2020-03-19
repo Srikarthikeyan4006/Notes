@@ -1,0 +1,74 @@
+1) MONGO
+Form:
+DB- Collection - documents- Field,Values
+Cmds:
+*show dbs
+*use DBname (Create a db)
+*db.collectionname.insertOne({name:sk,id:210})
+*db.collectionname.find()  //also this //.pritty()
+
+
+
+2) CRUD-create,Read,update,read
+
+Create 
+
+*insertOne(Data,option)
+*insertMany(D,o)                //db.College.insertMany([{"name":"rishi","Roll":"111","Dep":"CSE"},{"name":"Suren","Roll":"115","dep":"IT"}])
+Read
+*find(Filter,option)
+*findOne(Filter,option)
+updata
+*Updat eone(d,o)                //db.College.updateOne({"Roll":"111"},{$set:{"Status":"Commited"}})
+*updateMany(d,o)
+*ReplaceOne(d,o)
+Delete
+*Deleteone(d,o)                //db.College.deleteOne({"name":"sk"})
+*DeleteMAny(d,o)
+
+
+
+3) Find
+db.College.find({"Fine":{$gt:99}}).pretty()
+ db.College.find({},{"name": 1,"Dep": 1,"_id" : 0}).pretty()   //projection method
+
+
+
+
+4) Embedded Doc (only in Mongo) 
+*document inside doc  (upto 100)                          //db.College.updateOne({"name":"sri"},{$set :{"home":{"address":128,"street":"kalipalayam"}}})
+
+
+
+
+5)Array                         //db.College.updateOne({"name":"shree"},{$set :{"mark":[99,92,87]}})
+
+
+
+6)Data Fetch
+
+db.College.findOne({"_id":ObjectId("5e71940e4ad3fe17bda07023")}).mark
+ db.College.find({"home.address":128}).pretty()
+
+
+
+
+7)Data Type 
+ISodata
+objectId
+int 
+bool
+string
+Array
+Emb Docu
+
+
+
+
+1-1 
+*Reference
+> db.School.insertOne({"name":"GKD","Rate":4.5})
+        "acknowledged" : true,
+        "insertedId" : ObjectId("5e71b15e4ad3fe17bda07024") 
+
+db.College.updateOne({"name":"sri"},{$set:{"School":ObjectId("5e71b15e4ad3fe17bda07024")}})
